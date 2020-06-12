@@ -1,7 +1,7 @@
 {
-  "name": "veeno",
-  "version": "0.0.4",
-  "description": "noUiSlider component for vue 2",
+  "name": "noui-vue",
+  "version": "0.0.6",
+  "description": "noUiSlider component for vue 2 & nuxt",
   "keywords": [
     "vue",
     "slider",
@@ -15,10 +15,10 @@
   "main": "dist/veeno.umd.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lahori-Jawan/veeno"
+    "url": "https://github.com/willpercey-gb/veeno"
   },
-  "author": "Nasir Khan <virgodgreat@gmail.com>",
-  "homepage": "http://veeno.surge.sh/",
+  "author": "Will Percey && Nasir Khan",
+  "homepage": "https://uwebpro.com/",
   "module": "dist/veeno.esm.js",
   "unpkg": "dist/veeno.min.js",
   "browser": {
@@ -40,9 +40,9 @@
     "rollup-plugin-buble": "^0.19.2",
     "rollup-plugin-gzip": "^1.4.0",
     "rollup-plugin-includepaths": "^0.2.3",
+    "rollup-plugin-uglify": "^4.0.0",
     "rollup-plugin-uglify-es": "0.0.1",
     "rollup-plugin-vue": "^3.0.0",
-    "rollup-plugin-uglify": "^4.0.0",
     "vue": "^2.5.16",
     "vue-template-compiler": "^2.5.16"
   }
