@@ -93,7 +93,7 @@ export default {
     events.forEach(event => {
       slider.noUiSlider.on(event, (values, handle, unencoded, tap, positions) => {
         this.$emit(event, {values, handle, unencoded, tap, positions})
-        event === 'update' && (this.$emit('input', values[handle]))
+        event === 'update' && (this.$emit('input', values))
       })
     })
     this.getset(slider)
