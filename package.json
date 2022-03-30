@@ -1,6 +1,6 @@
 {
-  "name": "noui-vue",
-  "version": "0.0.6",
+  "name": "noui-vue-fr",
+  "version": "0.0.8",
   "description": "noUiSlider component for vue 2 & nuxt",
   "keywords": [
     "vue",
@@ -15,9 +15,9 @@
   "main": "dist/veeno.umd.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/willpercey-gb/veeno"
+    "url": "https://github.com/cvetlicnifractional/veeno"
   },
-  "author": "Will Percey && Nasir Khan",
+  "author": "Will Percey && Nasir Khan && Klemen Fajs",
   "homepage": "https://uwebpro.com/",
   "module": "dist/veeno.esm.js",
   "unpkg": "dist/veeno.min.js",
@@ -31,7 +31,7 @@
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/veeno.min.js"
   },
   "dependencies": {
-    "nouislider": "^11.1.0"
+    "nouislider": "^15.5.1"
   },
   "devDependencies": {
     "minimist": "^1.2.0",

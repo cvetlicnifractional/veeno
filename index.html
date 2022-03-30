@@ -1,44 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Veeno | Slider</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.css">
-  <style>
-    .padd {
-      padding: 1.5rem .5rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Veeno | Slider</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.css" rel="stylesheet">
+    <style>
+        .padd {
+            padding: 1.5rem .5rem;
+        }
+    </style>
 </head>
 <body>
-  <div id="app" style="max-width: 70%; margin: 0 auto; padding-top: 3rem;">
+<div id="app" style="max-width: 70%; margin: 0 auto; padding-top: 3rem;">
     <div class="padd">
-      <veeno :handles="110" tooltips
-      :range = "{ 'min': 100, 'max': 350 }"
-      :pipsy = "{mode: 'range', density: 5}"
-      ></veeno>
+        <veeno :connect="'lower'" :handles="[0]"
+               :range="{ 'min': 0, 'max': 10 }"
+               tooltips
+        ></veeno>
     </div>
     <div class="padd">
-      <veeno :handles="[120, 200]" tooltips
-      :range = "{ 'min': 100, 'max': 350 }"
-      behaviour="drag-fixed"
-      connect
-      :pipsy = "{mode: 'range', density: 5}"
-      ></veeno>
+        <veeno :handles="[120, 200]" :pipsy="{mode: 'range', density: 5}"
+               :range="{ 'min': 100, 'max': 350 }"
+               behaviour="drag-fixed"
+               connect
+               tooltips
+        ></veeno>
     </div>
-  </div>
+    <div class="padd">
+        <veeno
+                :handles="[110, 255]"
+                :range="{
+                  'min': 100,
+                  'max': 350
+                }"
+                :step="1"
+                :format="{
+                    to: function (value) {
+                        return value + ',-';
+                    },
+                    // 'from' the formatted value.
+                    // Receives a string, should return a number.
+                    from: function (value) {
+                        return Number(value.replace(',-', ''));
+                    }
+                }"
+                tooltips
+                document-element-id="app"
+                connect
+                pipsy
+        ></veeno>
+    </div>
+</div>
 
 
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/11.1.0/nouislider.js"></script>
-  <!-- <script src="https://unpkg.com/veeno@0.0.4/dist/veeno.min.js"></script> -->
-  <script src="./dist/veeno.min.js"></script>
-  <script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.js"></script>
+<!-- <script src="https://unpkg.com/veeno@0.0.4/dist/veeno.min.js"></script> -->
+<script src="./dist/veeno.min.js"></script>
+<script>
     new Vue({
-      el: '#app',
+        el: '#app',
     })
-  </script>
+</script>
 </body>
 </html>

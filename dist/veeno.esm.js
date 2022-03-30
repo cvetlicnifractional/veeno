@@ -33,11 +33,11 @@ var veeno = {
       default: null
     },
     connect: {
-      type: [Boolean, Array], 
+      type: [Boolean, Array, String],
       default: false    // validate values are boolean
     },
     tooltips: {
-      type: [Boolean, Array], 
+      type: [Boolean, Array],
       default: false    // validate values are boolean
     },
     step: {
@@ -56,7 +56,31 @@ var veeno = {
     },
     rtl: {
       type: Boolean,
-      default: false 
+      default: false
+    },
+    keyboardSupport: {
+      type: Boolean,
+      default: true
+    },
+    keyboardDefaultStep: {
+      type: Number,
+      default: 10
+    },
+    keyboardPageMultiplier: {
+      type: Number,
+      default: 5
+    },
+    keyboardMultiplier: {
+      type: Number,
+      default: 1
+    },
+    documentElementId: {
+      type: [String, null],
+      default: null
+    },
+    format: {
+      type: Object,
+      default: null
     },
     // test below (set) prop for both types i.e. Number, Array
     set: {
@@ -75,23 +99,25 @@ var veeno = {
     }
   },
   created: function created () {
-    this.optionz = Object.assign({}, 
-      this.options, this.$props, 
+    this.optionz = Object.assign({},
+      this.options, this.$props,
       // this.vertical ? this.options.orientation = 'vertical': '',
       this.vertical && (this.options.orientation = 'vertical'),
       this.handles && (this.options.start = this.handles),
       this.rtl && (this.options.direction = 'rtl'),
-      this.pipsy && !Object.keys(this.pipsy).length ? 
+      this.pipsy && !Object.keys(this.pipsy).length ?
         this.options.pips = {mode: 'range',density: 5} : this.options.pips = this.pipsy
     );
   },
   mounted: function mounted () {
     var this$1 = this;
 
+    var documentElement = document.getElementById(this.documentElementId);
+    this.optionz.documentElement = documentElement || null;
     var slider = this.$el;
     this.options.orientation === 'vertical' && (slider.style.height = '100%');
     noUiSlider.create(slider, this.optionz);
-    
+
     events.forEach(function (event) {
       slider.noUiSlider.on(event, function (values, handle, unencoded, tap, positions) {
         this$1.$emit(event, {values: values, handle: handle, unencoded: unencoded, tap: tap, positions: positions});
@@ -101,19 +127,19 @@ var veeno = {
     this.getset(slider);
   },
   render: function render (createElement) {
-    var child = createElement('input', 
+    var child = createElement('input',
         {
           attrs: {
             'type': 'hidden',
             name:this.name,
           },
-          class:this.inputClass 
+          class:this.inputClass
         }
       );
-    var span = createElement('span', spanOptions,this.$slots.default); 
+    var span = createElement('span', spanOptions,this.$slots.default);
 
-    return createElement('div', 
-    divOptions, 
+    return createElement('div',
+    divOptions,
     [
       child,
       span

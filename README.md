@@ -3,6 +3,7 @@
 veeno is a range slider component for vue based off of 
 [noUiSlider](https://github.com/leongersen/noUiSlider)
 It supports all noUiSlider features.
+This particular fork has been updated to use the latest version of nouislider library (15.5.1)
 
 ## Installation
 
